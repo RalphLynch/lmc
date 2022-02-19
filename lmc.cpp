@@ -83,7 +83,11 @@ int main(int argc, char* argv[])
         case 5:
             // LDA
             accumulator = std::stoi(mailboxes[address_register]);
-            break;
+            if (accumulator < -999 || accumulator > 999) {
+                std::cerr << "Error: value out of range at address "
+                    << address_register << std::endl;
+                std::exit(EXIT_FAILURE);
+            }
         case 6:
             break;
         case 7:
