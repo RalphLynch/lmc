@@ -14,5 +14,13 @@
  * limitations under the License.
  */
 
-int main() { }
+#include <cstdlib>
+#include <iostream>
 
+int main(int argc, char *argv)
+{
+	if (argc < 2) {
+		std::cerr << "Error: no file specified" << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+}
