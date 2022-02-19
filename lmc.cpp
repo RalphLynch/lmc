@@ -62,6 +62,14 @@ int main(int argc, char *argv[])
 
 		switch (instruction_register) {
 		case 0:
+			// HLT
+			if (address_register == 0)
+				program_counter = mailboxes.size();
+			else {
+				std::cerr << "Error: illegal operand at address "
+					<< --program_counter << std::endl;
+				std::exit(EXIT_FAILURE);
+			}
 			break;
 		case 1:
 			break;
