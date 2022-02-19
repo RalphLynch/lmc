@@ -40,4 +40,11 @@ int main(int argc, char *argv[])
 		std::cerr << "Error: unable to open file" << std::endl;
 		std::exit(EXIT_FAILURE);
 	}
+
+	// Copies the contents of program_file to mailboxes
+	for (auto i = mailboxes.begin(); i != mailboxes.end() && !program_file.eof(); ++i) {
+		program_file >> *i;
+	}
+
+	program_file.close();
 }
