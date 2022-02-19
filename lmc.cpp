@@ -49,6 +49,10 @@ int main(int argc, char* argv[])
 
     program_file.close();
 
+    for (auto i : mailboxes) {
+        std::cout << i << '\n';
+    }
+
     int program_counter{ 0 }, accumulator{ 0 }, instruction_register{ 0 },
         address_register{ 0 };
 
@@ -82,7 +86,7 @@ int main(int argc, char* argv[])
             break;
         case 5:
             // LDA
-            accumulator = std::stoi(mailboxes[address_register].substr(0, 3));
+            accumulator = std::stoi(mailboxes[address_register]);
             break;
         case 6:
             break;
