@@ -14,13 +14,21 @@
  * limitations under the License.
  */
 
+#include <array>
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
+#include <string>
 
 int main(int argc, char *argv)
 {
+	// Checks if the user has passed a file as an argument
 	if (argc < 2) {
 		std::cerr << "Error: no file specified" << std::endl;
 		std::exit(EXIT_FAILURE);
 	}
+
+	// Creates the mailboxes and fills them with 000
+	std::array<std::string, 100> mailboxes;
+	mailboxes.fill("000");
 }
