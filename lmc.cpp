@@ -28,10 +28,6 @@ int main(int argc, char *argv[])
 		std::exit(EXIT_FAILURE);
 	}
 
-	// Creates the mailboxes and fills them with 000
-	std::array<std::string, 100> mailboxes;
-	mailboxes.fill("000");
-
 	// Opens the file containing the program
 	std::ifstream program_file(argv[1]);
 
@@ -41,10 +37,50 @@ int main(int argc, char *argv[])
 		std::exit(EXIT_FAILURE);
 	}
 
+	// Creates the mailboxes and fills them with 000
+	std::array<std::string, 100> mailboxes;
+	mailboxes.fill("000");
+
 	// Copies the contents of program_file to mailboxes
-	for (auto i = mailboxes.begin(); i != mailboxes.end() && !program_file.eof(); ++i) {
+	for (auto i = mailboxes.begin(); i != mailboxes.end() && !program_file.eof();
+		++i) {
 		program_file >> *i;
 	}
 
 	program_file.close();
+
+	int program_counter{ 0 }, accumulator{ 0 }, instruction_register{ 0 },
+		address_register{ 0 };
+
+	// Fetch-execute cycle
+	while (program_counter < mailboxes.size()) {
+		// Stores the opcode and operand in registers
+		instruction_register = std::stoi(mailboxes[program_counter].substr(0, 1));
+		address_register = std::stoi(mailboxes[program_counter].substr(1, 2));
+
+		++program_counter;
+
+		switch (instruction_register) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		case 8:
+			break;
+		case 9:
+			break;
+		}
+	}
 }
