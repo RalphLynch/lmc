@@ -54,6 +54,12 @@ int main(int argc, char* argv[])
 
     // Fetch-execute cycle
     while (program_counter < mailboxes.size()) {
+        // Checks if opcode and operand are long enough
+        if (mailboxes[program_counter].size() < 3) {
+            std::cerr << "Error: syntax error at address " << program_counter << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+
         // Stores the opcode and operand in registers
         instruction_register = std::stoi(mailboxes[program_counter]
             .substr(0, 1));
@@ -101,6 +107,14 @@ int main(int argc, char* argv[])
                 std::exit(EXIT_FAILURE);
             }
         case 6:
+            // BRA
+            if (address_register < 0) {
+                std::cerr << "Error: illegal operand at address "
+                    << --program_counter << std::endl;
+                std::exit(EXIT_FAILURE);
+            }
+
+            program_counter = address_register;
             break;
         case 7:
             break;
