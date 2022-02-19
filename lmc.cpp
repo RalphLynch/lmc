@@ -78,10 +78,22 @@ int main(int argc, char* argv[])
             break;
         case 3:
             // STA
+            if (address_register < 0) {
+                std::cerr << "Error: illegal operand at address "
+                    << --program_counter << std::endl;
+                std::exit(EXIT_FAILURE);
+            }
+
             mailboxes[address_register] = std::to_string(address_register);
             break;
         case 5:
             // LDA
+            if (address_register < 0) {
+                std::cerr << "Error: illegal operand at address "
+                    << --program_counter << std::endl;
+                std::exit(EXIT_FAILURE);
+            }
+
             accumulator = std::stoi(mailboxes[address_register]);
             if (accumulator < -999 || accumulator > 999) {
                 std::cerr << "Error: value out of range at address "
