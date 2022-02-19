@@ -76,6 +76,8 @@ int main(int argc, char *argv[])
 		case 2:
 			break;
 		case 3:
+			// STA
+			mailboxes[address_register] = std::to_string(address_register);
 			break;
 		case 4:
 			break;
