@@ -91,6 +91,15 @@ int main(int argc, char* argv[])
         case 8:
             break;
         case 9:
+            // OUT
+            if (address_register == 2)
+                std::cout << accumulator << '\n';
+            else {
+                std::cerr << "Error: illegal operand at address "
+                    << --program_counter << std::endl;
+                std::exit(EXIT_FAILURE);
+            }
+
             break;
         }
     }
