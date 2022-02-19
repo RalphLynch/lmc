@@ -49,10 +49,6 @@ int main(int argc, char* argv[])
 
     program_file.close();
 
-    for (auto i : mailboxes) {
-        std::cout << i << '\n';
-    }
-
     int program_counter{ 0 }, accumulator{ 0 }, instruction_register{ 0 },
         address_register{ 0 };
 
@@ -95,8 +91,17 @@ int main(int argc, char* argv[])
         case 8:
             break;
         case 9:
+            // INP
+            if (address_register == 1) {
+                std::cout << "Input:\n";
+                while (std::cin >> accumulator) {
+                    if (accumulator > -1000 && accumulator < 1000)
+                        break;
+                    std::cerr << "Error: input out of range\n";
+                }
+            }
             // OUT
-            if (address_register == 2)
+            else if (address_register == 2)
                 std::cout << accumulator << '\n';
             else {
                 std::cerr << "Error: illegal operand at address "
