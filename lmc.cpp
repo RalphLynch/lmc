@@ -20,7 +20,7 @@
 #include <iostream>
 #include <string>
 
-int main(int argc, char *argv)
+int main(int argc, char *argv[])
 {
 	// Checks if the user has passed a file as an argument
 	if (argc < 2) {
@@ -31,4 +31,13 @@ int main(int argc, char *argv)
 	// Creates the mailboxes and fills them with 000
 	std::array<std::string, 100> mailboxes;
 	mailboxes.fill("000");
+
+	// Opens the file containing the program
+	std::ifstream program_file(argv[1]);
+
+	// Ends the program if the file cannot be opened
+	if (program_file.fail()) {
+		std::cerr << "Error: unable to open file" << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
 }
